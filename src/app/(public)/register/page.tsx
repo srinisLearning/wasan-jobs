@@ -69,7 +69,7 @@ function RegisterPage() {
     setLoading(false);
   }
   return (
-    <div className="bg-gray-200 flex justify-center items-center h-screen">
+    <div className="bg-[#ece5d8] flex justify-center items-center h-screen">
       <div className="bg-white shadow rounded p-5 flex flex-col w-[450px]">
         <div className="flex justify-between items-center">
           <h1 className="text-primary font-bold text-lg">
@@ -113,7 +113,7 @@ function RegisterPage() {
                 </FormItem>
               )}
             />
-                <FormField
+            <FormField
               control={form.control}
               name="mobile"
               render={({ field }) => (
@@ -153,11 +153,15 @@ function RegisterPage() {
                         <SelectValue placeholder="Role" />
                       </SelectTrigger>
                       <SelectContent>
-                        {userRoles.map((role) => (
+                        {/*  {userRoles.map((role) => (
                           <SelectItem key={role.value} value={role.value}>
                             {role.label}
                           </SelectItem>
-                        ))}
+                        ))} */}
+                        <SelectItem value="job-seeker">Job Seeker</SelectItem>
+                        <SelectItem value="recruiter" disabled>
+                          Recruiter
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </FormControl>

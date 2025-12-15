@@ -3,6 +3,7 @@ import { IUser } from "@/interfaces";
 import useUsersStore, { IUsersStore } from "@/store/users-store";
 import { Menu } from "lucide-react";
 import React from "react";
+import Link from "next/link";
 import SidebarMenuItems from "./sidebar-menuitems";
 
 function Header() {
@@ -10,14 +11,20 @@ function Header() {
   const [openMenuItems, setOpenMenuItems] = React.useState<boolean>(false);
   return (
     <div className="bg-primary p-5 flex justify-between items-center">
-      <h1 className="text-white font-bold text-2xl">Wasan Jobs</h1>
+      <Link href="/">
+        <h1 className="text-white font-bold text-2xl cursor-pointer">
+          Wasan Jobs
+        </h1>
+      </Link>
       <div>
-        <h3 className="text-white font-bold text-xl">{user?.role.toUpperCase()} DASHBOARD</h3>
+        <h3 className="text-white font-bold text-xl">
+          {user?.role.toUpperCase()} DASHBOARD
+        </h3>
       </div>
 
       <div className="flex gap-5 items-center">
         <h1 className="text-sm text-white font-bold">
-          {user?.name.toUpperCase()} 
+          {user?.name.toUpperCase()}
         </h1>
         <Button onClick={() => setOpenMenuItems(true)}>
           {" "}
