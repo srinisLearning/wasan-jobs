@@ -1,0 +1,209 @@
+import dayjs from 'dayjs';
+
+const getRandomDate = () => {
+  const key = 'randomDate';
+  let date = localStorage.getItem(key);
+  if (!date) {
+    date = dayjs().add(Math.floor(Math.random() * 15) + 5, 'day').format('YYYY-MM-DD');
+    localStorage.setItem(key, date);
+  }
+  return date;
+};
+
+export const jobs = [
+  {
+    "recruiter_id": 3,
+    "title": "Senior Angular Developer",
+    "description": "Seeking a Senior Angular Developer to lead scalable web app development, optimize UI performance, integrate APIs, and mentor the frontend team. Strong Angular, TypeScript, and RxJS experience required.",
+    "location": "Chennai",
+    "job_type": "full-time",
+    "min_salary": 850000,
+    "max_salary": 1550000,
+    "exp_required": 6,
+    "last_date_to_apply": getRandomDate(),
+    "skills": ["Angular", "TypeScript", "RxJS", "NgRx", "HTML", "CSS"],
+    "status": "open"
+  },
+  {
+    "recruiter_id": 3,
+    "title": "Next/React Developer",
+    "description": "We are hiring a Junior React/Next.js Developer to support UI development, fix bugs, test components, and collaborate with senior developers. Basic React and JavaScript understanding required.",
+    "location": "Mumbai",
+    "job_type": "contract",
+    "min_salary": 250000,
+    "max_salary": 480000,
+    "exp_required": 1,
+    "last_date_to_apply": getRandomDate(),
+    "skills": ["React", "Next.js", "JavaScript", "HTML", "CSS"],
+    "status": "open"
+  },
+  {
+    "recruiter_id": 3,
+    "title": "Senior Nuxt / Vue Developer",
+    "description": "The Senior Nuxt/Vue Developer will architect dynamic, SEO-friendly interfaces using Vue.js and Nuxt. Must be experienced in state management and optimizing frontend workflows.",
+    "location": "Bangalore",
+    "job_type": "full-time",
+    "min_salary": 880000,
+    "max_salary": 1450000,
+    "exp_required": 7,
+    "last_date_to_apply": getRandomDate(),
+    "skills": ["Vue.js", "Nuxt.js", "Vuex", "JavaScript", "TailwindCSS"],
+    "status": "open"
+  },
+  {
+    "recruiter_id": 3,
+    "title": "Junior Laravel Developer",
+    "description": "Junior Laravel Developer required to help develop backend APIs, debug modules, and maintain project components. Applicants should understand PHP basics and Laravel MVC structure.",
+    "location": "Hyderabad",
+    "job_type": "intership",
+    "min_salary": 140000,
+    "max_salary": 290000,
+    "exp_required": 0.5,
+    "last_date_to_apply": getRandomDate(),
+    "skills": ["Laravel", "PHP", "MySQL", "Blade", "REST APIs"],
+    "status": "open"
+  },
+  {
+    "recruiter_id": 3,
+    "title": "Flutter Developer",
+    "description": "Hiring a Senior Flutter Developer experienced in building cross-platform applications. Responsibilities include UI design, API integration, and mentoring junior developers.",
+    "location": "Pune",
+    "job_type": "full-time",
+    "min_salary": 900000,
+    "max_salary": 1520000,
+    "exp_required": 6,
+    "last_date_to_apply": getRandomDate(),
+    "skills": ["Flutter", "Dart", "Bloc", "Firebase", "REST APIs"],
+    "status": "open"
+  },
+  {
+    "recruiter_id": 3,
+    "title": "Junior MERN Stack Developer",
+    "description": "Hiring a Junior MERN Stack Developer to assist with full-stack development tasks, build frontend UI, and develop backend APIs.",
+    "location": "Kolkata",
+    "job_type": "contract",
+    "min_salary": 240000,
+    "max_salary": 420000,
+    "exp_required": 1,
+    "last_date_to_apply": getRandomDate(),
+    "skills": ["MongoDB", "Express", "React", "Node.js"],
+    "status": "open"
+  },
+  /* {
+    "recruiter_id": 3,
+    "title": "Senior Django Developer",
+    "description": "Seeking a Senior Django Developer to build scalable backend systems, optimize queries, design APIs, and guide junior developers.",
+    "location": "Kochi",
+    "job_type": "full-time",
+    "min_salary": 980000,
+    "max_salary": 1620000,
+    "exp_required": 7,
+    "last_date_to_apply": getRandomDate(),
+    "skills": ["Django", "Python", "PostgreSQL", "Django REST Framework"],
+    "status": "open"
+  },
+  {
+    "recruiter_id": 3,
+    "title": "Junior Android Developer",
+    "description": "Junior Android Developer needed for app UI development, bug fixing, and testing. Familiarity with Kotlin or Java required.",
+    "location": "Noidaa",
+    "job_type": "intership",
+    "min_salary": 180000,
+    "max_salary": 320000,
+    "exp_required": 1,
+    "last_date_to_apply": getRandomDate(),
+    "skills": ["Kotlin", "Java", "Android Studio", "XML"],
+    "status": "open"
+  },
+  {
+    "recruiter_id": 3,
+    "title": "Senior IOS Developer",
+    "description": "Looking for a Senior iOS Developer to build and maintain high-quality applications, optimize performance, and lead the mobile team.",
+    "location": "Hyderabad",
+    "job_type": "full-time",
+    "min_salary": 1200000,
+    "max_salary": 1850000,
+    "exp_required": 8,
+    "last_date_to_apply": getRandomDate(),
+    "skills": ["Swift", "Objective-C", "Xcode", "iOS SDK"],
+    "status": "open"
+  },
+  {
+    "recruiter_id": 3,
+    "title": "Junior Flutter Developer",
+    "description": "Junior Flutter Developer required to support UI implementation, test features, and integrate simple APIs. Must understand Dart basics.",
+    "location": "Chennai",
+    "job_type": "contract",
+    "min_salary": 200000,
+    "max_salary": 380000,
+    "exp_required": 1,
+    "last_date_to_apply": getRandomDate(),
+    "skills": ["Flutter", "Dart", "Git"],
+    "status": "open"
+  },
+  {
+    "recruiter_id": 3,
+    "title": "Senior MERN Stack Developer",
+    "description": "A Senior MERN Developer will architect backend services, design frontend components, optimize API performance, and mentor the full-stack team.",
+    "location": "Bangalore",
+    "job_type": "full-time",
+    "min_salary": 1100000,
+    "max_salary": 1750000,
+    "exp_required": 7,
+    "last_date_to_apply": getRandomDate(),
+    "skills": ["MongoDB", "Express", "React", "Node.js", "TypeScript"],
+    "status": "open"
+  },
+  {
+    "recruiter_id": 3,
+    "title": "Junior Django Developer",
+    "description": "Hiring a Junior Django Developer to support development of backend modules, build APIs, and assist with database operations.",
+    "location": "Mumbai",
+    "job_type": "intership",
+    "min_salary": 170000,
+    "max_salary": 300000,
+    "exp_required": 0.5,
+    "last_date_to_apply": getRandomDate(),
+    "skills": ["Django", "Python", "SQLite", "REST APIs"],
+    "status": "open"
+  },
+  {
+    "recruiter_id": 3,
+    "title": "Senior Laravel Developer",
+    "description": "Senior Laravel Developer needed to develop backend modules, write APIs, optimize MySQL queries, and lead architectural decisions.",
+    "location": "Kochi",
+    "job_type": "contract",
+    "min_salary": 880000,
+    "max_salary": 1450000,
+    "exp_required": 6,
+    "last_date_to_apply": getRandomDate(),
+    "skills": ["Laravel", "PHP", "MySQL", "Redis", "REST APIs"],
+    "status": "open"
+  },
+  {
+    "recruiter_id": 3,
+    "title": "Junior Nuxt / Vue Developer",
+    "description": "Junior Nuxt/Vue Developer to assist in building UI components, maintain front-end pages, and support state management tasks.",
+    "location": "Pune",
+    "job_type": "intership",
+    "min_salary": 190000,
+    "max_salary": 330000,
+    "exp_required": 1,
+    "last_date_to_apply": getRandomDate(),
+    "skills": ["Vue.js", "Nuxt.js", "JavaScript", "HTML", "CSS"],
+    "status": "open"
+  },
+  {
+    "recruiter_id": 3,
+    "title": "Senior Android Developer",
+    "description": "Senior Android Developer required to build advanced applications, lead architecture planning, and guide junior developers. Experience with Kotlin, Jetpack, and MVVM is essential.",
+    "location": "Noidaa",
+    "job_type": "full-time",
+    "min_salary": 1050000,
+    "max_salary": 1680000,
+    "exp_required": 7,
+    "last_date_to_apply": getRandomDate(),
+    "skills": ["Kotlin", "Java", "Jetpack", "Android Studio", "MVVM"],
+    "status": "open"
+  } */
+]

@@ -1,0 +1,111 @@
+-- WARNING: This schema is for context only and is not meant to be run.
+-- Table order and constraints may not be valid for execution.
+
+CREATE TABLE public.hot_user_profiles (
+  id bigint GENERATED ALWAYS AS IDENTITY NOT NULL,
+  created_at timestamp with time zone NOT NULL DEFAULT now(),
+  name text,
+  email text UNIQUE,
+  mobile text UNIQUE,
+  password text,
+  role text,
+  status text,
+  CONSTRAINT hot_user_profiles_pkey PRIMARY KEY (id)
+);
+CREATE TABLE public.hot_hotels (
+  id bigint GENERATED ALWAYS AS IDENTITY NOT NULL,
+  created_at timestamp with time zone NOT NULL DEFAULT now(),
+  owner_id bigint,
+  name text,
+  description text,
+  address text,
+  city text,
+  email text,
+  phone text,
+  website text,
+  images ARRAY,
+  status text,
+  CONSTRAINT hot_hotels_pkey PRIMARY KEY (id),
+  CONSTRAINT hot_hotels_owner_id_fkey FOREIGN KEY (owner_id) REFERENCES public.hot_user_profiles(id)
+);
+CREATE TABLE public.hot_rooms (
+  id bigint GENERATED ALWAYS AS IDENTITY NOT NULL,
+  created_at timestamp with time zone NOT NULL DEFAULT now(),
+  hotel_id bigint,
+  owner_id bigint,
+  name text,
+  description text,
+  type text,
+  rent_per_day double precision,
+  status text,
+  amenities ARRAY,
+  images ARRAY,
+  CONSTRAINT hot_rooms_pkey PRIMARY KEY (id),
+  CONSTRAINT hot_rooms_hotel_id_fkey FOREIGN KEY (hotel_id) REFERENCES public.hot_hotels(id),
+  CONSTRAINT hot_rooms_owner_id_fkey FOREIGN KEY (owner_id) REFERENCES public.hot_user_profiles(id)
+);
+CREATE TABLE public.hot_bookings (
+  id bigint GENERATED ALWAYS AS IDENTITY NOT NULL,
+  created_at timestamp with time zone NOT NULL DEFAULT now(),
+  room_id bigint,
+  hotel_id bigint,
+  owner_id bigint,
+  customer_id bigint,
+  booked_dates ARRAY,
+  start_date date,
+  end_date date,
+  amount double precision,
+  payment_id text,
+  status text,
+  CONSTRAINT hot_bookings_pkey PRIMARY KEY (id),
+  CONSTRAINT hot_bookings_hotel_id_fkey FOREIGN KEY (hotel_id) REFERENCES public.hot_hotels(id),
+  CONSTRAINT hot_bookings_room_id_fkey FOREIGN KEY (room_id) REFERENCES public.hot_rooms(id),
+  CONSTRAINT hot_bookings_owner_id_fkey FOREIGN KEY (owner_id) REFERENCES public.hot_user_profiles(id),
+  CONSTRAINT hot_bookings_customer_id_fkey FOREIGN KEY (customer_id) REFERENCES public.hot_user_profiles(id)
+);
+
+===================================================================================================================================================================================================
+CREATE TABLE public.jobs_users (
+  id bigint GENERATED ALWAYS AS IDENTITY NOT NULL,
+  created_at timestamp with time zone NOT NULL DEFAULT now(),
+  name text,
+  email text UNIQUE,
+  mobile text,
+  password text,
+  role text,
+  profile_pic text,
+  resume_url text,
+  bio text,
+  CONSTRAINT jobs_users_pkey PRIMARY KEY (id)
+);
+CREATE TABLE public.jobs_jobTable (
+  id bigint GENERATED ALWAYS AS IDENTITY NOT NULL,
+  created_at timestamp with time zone NOT NULL DEFAULT now(),
+  recruiter_id bigint,
+  title text,
+  description text,
+  location text,
+  job_type text,
+  min_salary double precision,
+  max_salary double precision,
+  exp_required double precision,
+  last_date_to_apply date,
+  skills ARRAY,
+  status text,
+  CONSTRAINT jobs_jobTable_pkey PRIMARY KEY (id),
+  CONSTRAINT jobs_jobTable_recruiter_id_fkey FOREIGN KEY (recruiter_id) REFERENCES public.jobs_users(id)
+);
+CREATE TABLE public.jobs_application (
+  id bigint GENERATED ALWAYS AS IDENTITY NOT NULL,
+  created_at timestamp with time zone NOT NULL DEFAULT now(),
+  job_id bigint,
+  recruiter_id bigint,
+  job_seeker_id bigint,
+  cover_letter text,
+  resume_url text,
+  status text,
+  CONSTRAINT jobs_application_pkey PRIMARY KEY (id),
+  CONSTRAINT jobs_application_recruiter_id_fkey FOREIGN KEY (recruiter_id) REFERENCES public.jobs_users(id),
+  CONSTRAINT jobs_application_job_seeker_id_fkey FOREIGN KEY (job_seeker_id) REFERENCES public.jobs_users(id),
+  CONSTRAINT jobs_application_job_id_fkey FOREIGN KEY (job_id) REFERENCES public.jobs_jobTable(id)
+);
